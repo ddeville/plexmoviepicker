@@ -10,4 +10,4 @@ services:
       dockerfile: client.dockerfile
     image: plexmoviepicker-client
     ports:
-      - "3000:80"
+      - "25002:80"
