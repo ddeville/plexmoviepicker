@@ -2,11 +2,9 @@
 /client/build
 /client/.pnp
 .pnp.js
+npm-debug.log*
+
+/api/plexmoviepicker.egg-info
+/api/build
 
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*

@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    image: plexmoviepicker-api
+  client:
+    build:
+      context: .
+      dockerfile: client.dockerfile
+    image: plexmoviepicker-client
+    ports:
+      - "3000:80"
