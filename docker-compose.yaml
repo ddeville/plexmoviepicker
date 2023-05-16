@@ -1,12 +1,12 @@
 services:
   api:
     build:
-      context: .
+      context: ./api
       dockerfile: api.dockerfile
     image: plexmoviepicker-api
   client:
     build:
-      context: .
+      context: ./client
       dockerfile: client.dockerfile
     image: plexmoviepicker-client
     ports:

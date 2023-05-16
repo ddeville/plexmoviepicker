@@ -4,7 +4,7 @@ FROM python:3.11-alpine
 
 WORKDIR /app
 
-COPY api .
+COPY . .
 RUN pip install .
 
 ENV FLASK_ENV production
