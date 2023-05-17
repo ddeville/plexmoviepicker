@@ -41,6 +41,7 @@ function App() {
         defaultValue={selectedLanguage}
         onChange={setSelectedLanguage}
         options={languages}
+        isDisabled={isLoading}
         closeMenuOnSelect={true}
         isMulti={false}
         isClearable={true}
@@ -50,6 +51,7 @@ function App() {
         defaultValue={selectedCountry}
         onChange={setSelectedCountry}
         options={countries}
+        isDisabled={isLoading}
         closeMenuOnSelect={true}
         isMulti={false}
         isClearable={true}
@@ -59,6 +61,7 @@ function App() {
         defaultValue={selectedGenre}
         onChange={setSelectedGenre}
         options={genres}
+        isDisabled={isLoading}
         closeMenuOnSelect={true}
         isMulti={false}
         isClearable={true}
