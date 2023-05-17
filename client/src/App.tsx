@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Select from "react-select";
@@ -45,6 +46,7 @@ function App() {
     if (query.length > 0) {
       url += "?" + query.join("&")
     }
+    console.log(url)
 
     const res = await fetch(url)
     const data = await res.json();
