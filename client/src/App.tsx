@@ -9,13 +9,13 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   const [languages, setLanguages] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState<null| {label: string}>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<null| {value: string, label: string}>(null);
 
   const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState<null| {label: string}>(null);
+  const [selectedCountry, setSelectedCountry] = useState<null| {value: string, label: string}>(null);
 
   const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState<null| {label: string}>(null);
+  const [selectedGenre, setSelectedGenre] = useState<null| {value: string, label: string}>(null);
 
   useEffect(() => {
     const retrieveMetadata = async () => {
@@ -38,13 +38,13 @@ function App() {
 
     let query: string[] = []
     if (selectedLanguage !== null) {
-      query.push("audioLanguage=" + encodeURIComponent(selectedLanguage.label))
+      query.push("audioLanguage=" + encodeURIComponent(selectedLanguage.value))
     }
     if (selectedCountry !== null) {
-      query.push("country=" + encodeURIComponent(selectedCountry.label))
+      query.push("country=" + encodeURIComponent(selectedCountry.value))
     }
     if (selectedGenre !== null) {
-      query.push("genre=" + encodeURIComponent(selectedGenre.label))
+      query.push("genre=" + encodeURIComponent(selectedGenre.value))
     }
     let url = "/api/random_movie"
     if (query.length > 0) {
