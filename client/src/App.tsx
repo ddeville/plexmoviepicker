@@ -63,54 +63,56 @@ function App() {
 
   return (
     <div className="App">
-      <Select
-        defaultValue={selectedLanguage}
-        onChange={setSelectedLanguage}
-        options={languages}
-        isDisabled={isLoading}
-        closeMenuOnSelect={true}
-        isMulti={false}
-        isClearable={true}
-        isSearchable={true}
-      />
+      <div className="App-header">
+        <Select
+          defaultValue={selectedLanguage}
+          onChange={setSelectedLanguage}
+          options={languages}
+          isDisabled={isLoading}
+          closeMenuOnSelect={true}
+          isMulti={false}
+          isClearable={true}
+          isSearchable={true}
+        />
 
-      <Select
-        defaultValue={selectedCountry}
-        onChange={setSelectedCountry}
-        options={countries}
-        isDisabled={isLoading}
-        closeMenuOnSelect={true}
-        isMulti={false}
-        isClearable={true}
-        isSearchable={true}
-      />
+        <Select
+          defaultValue={selectedCountry}
+          onChange={setSelectedCountry}
+          options={countries}
+          isDisabled={isLoading}
+          closeMenuOnSelect={true}
+          isMulti={false}
+          isClearable={true}
+          isSearchable={true}
+        />
 
-      <Select
-        defaultValue={selectedGenre}
-        onChange={setSelectedGenre}
-        options={genres}
-        isDisabled={isLoading}
-        closeMenuOnSelect={true}
-        isMulti={false}
-        isClearable={true}
-        isSearchable={true}
-      />
+        <Select
+          defaultValue={selectedGenre}
+          onChange={setSelectedGenre}
+          options={genres}
+          isDisabled={isLoading}
+          closeMenuOnSelect={true}
+          isMulti={false}
+          isClearable={true}
+          isSearchable={true}
+        />
 
-      {
-        isLoading ? (
-          <Spinner animation="border" role="status" variant="primary">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        ) : null
-      }
+        {
+          isLoading ? (
+            <Spinner animation="border" role="status" variant="primary">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          ) : null
+        }
 
-      <Button
-        variant="primary"
-        disabled={isLoading}
-        onClick={!isLoading ? handleClick : undefined}
-      >
-      Pick a Movie
-      </Button>
+        <Button
+          variant="primary"
+          disabled={isLoading}
+          onClick={!isLoading ? handleClick : undefined}
+        >
+        Pick a Movie
+        </Button>
+      </div>
     </div>
   );
 }
