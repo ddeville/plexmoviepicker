@@ -16,16 +16,16 @@ random.seed()
 def get_metadata() -> dict[str, Any]:
     return {
         "countries": [
-            {"id": c.id, "title": c.tag} for c in plex.library.tags("country")
+            {"value": c.id, "label": c.tag} for c in plex.library.tags("country")
         ],
-        "genres": [{"id": g.id, "title": g.tag} for g in plex.library.tags("genre")],
+        "genres": [{"value": g.id, "label": g.tag} for g in plex.library.tags("genre")],
         "languages": [
-            {"id": "eng", "title": "English"},
-            {"id": "fra", "title": "French"},
-            {"id": "ita", "title": "Italian"},
-            {"id": "spa", "title": "Spanish"},
-            {"id": "heb", "title": "Hebrew"},
-            {"id": "swe", "title": "Swedish"},
+            {"value": "eng", "label": "English"},
+            {"value": "fra", "label": "French"},
+            {"value": "ita", "label": "Italian"},
+            {"value": "spa", "label": "Spanish"},
+            {"value": "heb", "label": "Hebrew"},
+            {"value": "swe", "label": "Swedish"},
         ],
     }
 

@@ -16,9 +16,9 @@ function App() {
     const retrieveMetadata = async () => {
       const res = await fetch("/api/metadata");
       const data = await res.json();
-      setLanguages(data.languages.map((language: any) => language.title));
-      setCountries(data.countries.map((country: any) => country.title));
-      setGenres(data.genres.map((genre: any) => genre.title));
+      setLanguages(data.languages);
+      setCountries(data.countries);
+      setGenres(data.genres);
     };
     retrieveMetadata();
   }, []);
