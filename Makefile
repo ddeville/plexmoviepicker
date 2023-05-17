@@ -1,4 +1,4 @@
-.PHONY: build freeze
+.PHONY: build freeze-deps
 
 build:
 	docker-compose -f docker-compose.yaml build
