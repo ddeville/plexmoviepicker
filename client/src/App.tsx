@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Select from "react-select";
+import Spinner from 'react-bootstrap/Spinner'
 import "./App.css";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         isClearable={true}
         isSearchable={true}
       />
+
       <Select
         defaultValue={selectedCountry}
         onChange={setSelectedCountry}
@@ -57,6 +59,7 @@ function App() {
         isClearable={true}
         isSearchable={true}
       />
+
       <Select
         defaultValue={selectedGenre}
         onChange={setSelectedGenre}
@@ -67,6 +70,14 @@ function App() {
         isClearable={true}
         isSearchable={true}
       />
+
+      {isLoading ? (
+        <Spinner animation="border" role="status" variant="primary">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+        ) : null
+      }
+
       <Button
         variant="primary"
         disabled={isLoading}
