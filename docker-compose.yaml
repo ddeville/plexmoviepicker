@@ -3,6 +3,9 @@ services:
     build:
       context: ./api
       dockerfile: api.dockerfile
+    environment:
+      - PLEX_AUTH_TOKEN
+      - PLEX_LOCATION
     image: plexmoviepicker-api
   client:
     build:
@@ -11,3 +14,4 @@ services:
     image: plexmoviepicker-client
     ports:
       - "25002:80"
+version: '3'
