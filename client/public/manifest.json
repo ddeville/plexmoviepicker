@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Plex Movie Picker",
+  "name": "Plex Movie Picker",
   "icons": [
     {
       "src": "favicon.ico",
