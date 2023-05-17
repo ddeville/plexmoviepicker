@@ -5,7 +5,6 @@ from typing import Any
 from flask import Flask, request
 from plexapi.server import PlexServer
 
-
 app = Flask("plexmoviebuilder")
 plex = PlexServer(
     baseurl=os.environ["PLEX_LOCATION"], token=os.environ["PLEX_AUTH_TOKEN"]
@@ -44,21 +43,28 @@ def get_random_movie() -> dict[str, Any]:
         kwargs["genre"] = genre
 
     movies = plex.library.section("Movies").searchMovies(**kwargs)
+    if not movies:
+        return {"movies": []}
+
     movie = random.choice(movies)
 
     return {
-        "guid": movie.guid,
-        "title": movie.title,
-        "originalTitle": movie.originalTitle,
-        "tagline": movie.tagline,
-        "summary": movie.summary,
-        "year": movie.year,
-        "art": movie.art,
-        "thumb": movie.thumb,
-        "duration": movie.duration,
-        "countries": [c.tag for c in movie.countries],
-        "directors": [d.tag for d in movie.directors],
-        "genres": [g.tag for g in movie.genres],
-        "rating": movie.rating,
-        "audienceRating": movie.audienceRating,
+        "movies": [
+            {
+                "guid": movie.guid,
+                "title": movie.title,
+                "originalTitle": movie.originalTitle,
+                "tagline": movie.tagline,
+                "summary": movie.summary,
+                "year": movie.year,
+                "art": movie.art,
+                "thumb": movie.thumb,
+                "duration": movie.duration,
+                "countries": [c.tag for c in movie.countries],
+                "directors": [d.tag for d in movie.directors],
+                "genres": [g.tag for g in movie.genres],
+                "rating": movie.rating,
+                "audienceRating": movie.audienceRating,
+            }
+        ]
     }
