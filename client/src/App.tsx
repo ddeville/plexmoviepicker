@@ -65,6 +65,7 @@ function App() {
     <div className="App">
       <div className="App-header">
         <Select
+          name={"Audio Language"}
           defaultValue={selectedLanguage}
           onChange={setSelectedLanguage}
           options={languages}
@@ -76,6 +77,7 @@ function App() {
         />
 
         <Select
+          name={"Country"}
           defaultValue={selectedCountry}
           onChange={setSelectedCountry}
           options={countries}
@@ -87,6 +89,7 @@ function App() {
         />
 
         <Select
+          name={"Genre"}
           defaultValue={selectedGenre}
           onChange={setSelectedGenre}
           options={genres}
