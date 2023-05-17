@@ -30,9 +30,26 @@ function App() {
 
   const handleClick = async () => {
     setLoading(true);
-    const res = await fetch("/api/random_movie");
+
+    let query: string[] = []
+    if (selectedLanguage !== null) {
+      query.push("audioLanguage=" + encodeURIComponent(selectedLanguage))
+    }
+    if (selectedCountry !== null) {
+      query.push("country=" + encodeURIComponent(selectedCountry))
+    }
+    if (selectedGenre !== null) {
+      query.push("genre=" + encodeURIComponent(selectedGenre))
+    }
+    let url = "/api/random_movie"
+    if (query.length > 0) {
+      url += "?" + query.join("&")
+    }
+
+    const res = await fetch(url)
     const data = await res.json();
     console.log(data);
+
     setLoading(false);
   }
 
@@ -71,10 +88,11 @@ function App() {
         isSearchable={true}
       />
 
-      {isLoading ? (
-        <Spinner animation="border" role="status" variant="primary">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+      {
+        isLoading ? (
+          <Spinner animation="border" role="status" variant="primary">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
         ) : null
       }
 
