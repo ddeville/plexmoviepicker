@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import Select from 'react-select';
-import './App.css';
+import React, {useEffect, useState} from "react";
+import Button from "react-bootstrap/Button";
+import Select from "react-select";
+import "./App.css";
 
 function App() {
+  const [isLoading, setLoading] = useState(true);
+
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
 
@@ -19,9 +22,18 @@ function App() {
       setLanguages(data.languages);
       setCountries(data.countries);
       setGenres(data.genres);
+      setLoading(false);
     };
     retrieveMetadata();
   }, []);
+
+  const handleClick = async () => {
+    setLoading(true);
+    const res = await fetch("/api/random_movie");
+    const data = await res.json();
+    console.log(data);
+    setLoading(false);
+  }
 
   return (
     <div className="App">
@@ -29,17 +41,36 @@ function App() {
         defaultValue={selectedLanguage}
         onChange={setSelectedLanguage}
         options={languages}
+        closeMenuOnSelect={true}
+        isMulti={false}
+        isClearable={true}
+        isSearchable={true}
       />
       <Select
         defaultValue={selectedCountry}
         onChange={setSelectedCountry}
         options={countries}
+        closeMenuOnSelect={true}
+        isMulti={false}
+        isClearable={true}
+        isSearchable={true}
       />
       <Select
         defaultValue={selectedGenre}
         onChange={setSelectedGenre}
         options={genres}
+        closeMenuOnSelect={true}
+        isMulti={false}
+        isClearable={true}
+        isSearchable={true}
       />
+      <Button
+        variant="primary"
+        disabled={isLoading}
+        onClick={!isLoading ? handleClick : undefined}
+      >
+      Pick a Movie
+      </Button>
     </div>
   );
 }
