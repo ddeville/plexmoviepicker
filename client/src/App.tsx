@@ -1,32 +1,45 @@
 import React, {useEffect, useState} from 'react';
+import Select from 'react-select';
 import './App.css';
 
 function App() {
-  const [metadata, setMetadata] = useState(0);
+  const [languages, setLanguages] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(null);
 
   useEffect(() => {
-    fetch("/api/metadata").then(res => res.json()).then(data => {
-      console.log(data);
-      setMetadata(data);
-    });
+    const retrieveMetadata = async () => {
+      const res = await fetch("/api/metadata");
+      const data = await res.json();
+      setLanguages(data.languages.map((language: any) => language.title));
+      setCountries(data.countries.map((country: any) => country.title));
+      setGenres(data.genres.map((genre: any) => genre.title));
+    };
+    retrieveMetadata();
   }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Metadata {metadata}.</p>
-      </header>
+      <Select
+        defaultValue={selectedLanguage}
+        onChange={setSelectedLanguage}
+        options={languages}
+      />
+      <Select
+        defaultValue={selectedCountry}
+        onChange={setSelectedCountry}
+        options={countries}
+      />
+      <Select
+        defaultValue={selectedGenre}
+        onChange={setSelectedGenre}
+        options={genres}
+      />
     </div>
   );
 }
