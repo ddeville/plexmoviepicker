@@ -17,9 +17,9 @@ random.seed()
 def get_metadata() -> dict[str, Any]:
     return {
         "countries": [
-            {"id": c.id, "title": c.title} for c in plex.library.tags("country")
+            {"id": c.id, "title": c.tag} for c in plex.library.tags("country")
         ],
-        "genres": [{"id": g.id, "title": g.title} for g in plex.library.tags("genre")],
+        "genres": [{"id": g.id, "title": g.tag} for g in plex.library.tags("genre")],
         "languages": [
             {"id": "eng", "title": "English"},
             {"id": "fra", "title": "French"},
