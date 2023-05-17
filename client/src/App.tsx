@@ -9,13 +9,15 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   const [languages, setLanguages] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState<null| {value: string, label: string}>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<null | {value: string, label: string}>(null);
 
   const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState<null| {value: string, label: string}>(null);
+  const [selectedCountry, setSelectedCountry] = useState<null | {value: string, label: string}>(null);
 
   const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState<null| {value: string, label: string}>(null);
+  const [selectedGenre, setSelectedGenre] = useState<null | {value: string, label: string}>(null);
+
+  const [movie, setMovie] = useState<null | any>(null);
 
   useEffect(() => {
     const retrieveMetadata = async () => {
@@ -51,19 +53,17 @@ function App() {
       url += "?" + query.join("&")
     }
 
-    console.log(url)
-
     const res = await fetch(url)
     const data = await res.json();
-    // TODO(damien): Actually show content
-    console.log(data);
+
+    setMovie(data.movies.length > 0 ? data.movies[0] : null)
 
     setLoading(false);
   }
 
   return (
     <div className="App">
-      <div className="App-header">
+      <div className="App-select">
         <Select
           name="Audio Language"
           defaultValue={selectedLanguage}
@@ -115,6 +115,18 @@ function App() {
         >
         Pick a Movie
         </Button>
+
+        <div className="App-movie">
+        {
+            movie ? (
+              <div>
+              <p>{movie.title}</p>
+              <p>{movie.summary}</p>
+              <p>{movie.year}</p>
+              </div>
+            ) : null
+        }
+        </div>
       </div>
     </div>
   );
