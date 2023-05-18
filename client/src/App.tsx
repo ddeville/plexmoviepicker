@@ -4,9 +4,23 @@ import Button from "react-bootstrap/Button";
 import Select from "react-select";
 import Spinner from 'react-bootstrap/Spinner'
 import Card from 'react-bootstrap/Card';
-import Placeholder from 'react-bootstrap/Placeholder';
 import "./App.css";
 
+interface Movie {
+  guid: string
+  title: string
+  originalTitle: string
+  tagline: string
+  summary: string
+  year: string
+  posterPath: string
+  duration: number
+  countries: string[]
+  directors: string[]
+  genres: string[]
+  rating: string
+  audienceRaging: string
+}
 function App() {
   const [isLoading, setLoading] = useState(true);
 
@@ -19,7 +33,7 @@ function App() {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState<null | {value: string, label: string}>(null);
 
-  const [movie, setMovie] = useState<null | any>(null);
+  const [movie, setMovie] = useState<null | Movie>(null);
 
   useEffect(() => {
     const retrieveMetadata = async () => {
@@ -130,13 +144,13 @@ function App() {
       {
         movie ? (
             <Card className="App-card">
-              <Card.Img variant="top" src={window.location.href + movie.posterPath} />
-              <Card.Body>
-                <Card.Title>{movie.title} {movie.year}</Card.Title>
-                <Card.Subtitle>{movie.tagline}</Card.Subtitle>
-                <Card.Text>{movie.summary}</Card.Text>
-                <Card.Text>Duration: {movie.duration}</Card.Text>
-                <Card.Text>Rating: {movie.rating}</Card.Text>
+              <Card.Img variant="top" className="img" src={window.location.href + movie.posterPath} />
+              <Card.Body className="App-card-body">
+                <Card.Title className="App-card-title">{movie.title} ({movie.year})</Card.Title>
+                <Card.Subtitle className="App-card-subtitle">{movie.tagline}</Card.Subtitle>
+                <Card.Text className="App-card-text">{movie.summary}</Card.Text>
+                <Card.Text className="App-card-text">Duration: {movie.duration}</Card.Text>
+                <Card.Text className="App-card-text">Rating: {movie.rating}</Card.Text>
               </Card.Body>
             </Card>
         ) : null
