@@ -19,8 +19,9 @@ interface Movie {
   directors: string[]
   genres: string[]
   rating: string
-  audienceRaging: string
+  audienceRating: string
 }
+
 function App() {
   const [isLoading, setLoading] = useState(true);
 
