@@ -59,6 +59,9 @@ def get_random_movie() -> dict[str, Any]:
 
     movie = random.choice(movies)
 
+    # NOTE: we don't return `movie.thumbUrl` because it contains the plex token.
+    # Instead we base64 encode the thumb path and return our endpoint in which we decode the path and reconstruct
+    # the full URL, including the plex token.
     poster_path = "/api/movie_poster/" + base64.urlsafe_b64encode(
         movie.thumb.encode("utf-8")
     ).decode("utf-8")
