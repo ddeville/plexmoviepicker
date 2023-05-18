@@ -8,6 +8,7 @@ setup(
         "flask==2.3.2",
         "gunicorn==20.1.0",
         "plexapi==4.13.4",
+        "requests==2.30.0",
     ],
     test_requires=[],
     package_data={

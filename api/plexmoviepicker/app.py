@@ -1,15 +1,18 @@
+import base64
+import io
 import os
 import random
 from typing import Any
 
-from flask import Flask, request
+import requests
+from flask import Flask, Response, make_response, request, send_file
 from plexapi.server import PlexServer
 
-app = Flask("plexmoviebuilder")
-plex = PlexServer(
-    baseurl=os.environ["PLEX_LOCATION"], token=os.environ["PLEX_AUTH_TOKEN"]
-)
+baseurl = os.environ["PLEX_LOCATION"]
+auth_token = os.environ["PLEX_AUTH_TOKEN"]
+plex = PlexServer(baseurl=baseurl, token=auth_token)
 random.seed()
+app = Flask("plexmoviebuilder")
 
 
 @app.route("/api/metadata")
@@ -57,8 +60,10 @@ def get_random_movie() -> dict[str, Any]:
                 "tagline": movie.tagline,
                 "summary": movie.summary,
                 "year": movie.year,
-                "art": movie.art,
-                "thumb": movie.thumb,
+                "posterId": "/api/movie_poster/"
+                + base64.urlsafe_b64encode(movie.thumbUrl.encode("utf-8")).decode(
+                    "utf-8"
+                ),
                 "duration": movie.duration,
                 "countries": [c.tag for c in movie.countries],
                 "directors": [d.tag for d in movie.directors],
@@ -68,3 +73,13 @@ def get_random_movie() -> dict[str, Any]:
             }
         ]
     }
+
+
+@app.route("/api/movie_poster/<id>")
+def get_movie_poster(id: str) -> Response:
+    private_url = baseurl + base64.urlsafe_b64decode(id.encode("utf-8")).decode("utf-8")
+    response = requests.get(private_url, params={"X-Plex-Token": auth_token})
+    if response.status_code == 200:
+        return send_file(io.BytesIO(response.content), mimetype="image/png")
+    else:
+        return make_response("Unable to fetch image", 400)

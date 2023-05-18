@@ -3,6 +3,8 @@ import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Select from "react-select";
 import Spinner from 'react-bootstrap/Spinner'
+import Card from 'react-bootstrap/Card';
+import Placeholder from 'react-bootstrap/Placeholder';
 import "./App.css";
 
 function App() {
@@ -119,12 +121,29 @@ function App() {
         <div className="App-movie">
         {
             movie ? (
-              <div>
-              <p>{movie.title}</p>
-              <p>{movie.summary}</p>
-              <p>{movie.year}</p>
-              </div>
-            ) : null
+                <Card style={{ width: '18rem', color: 'black' }}>
+                  <Card.Img variant="top" src={movie.posterUrl} />
+                  <Card.Body>
+                    <Card.Title>{movie.title}</Card.Title>
+                    <Card.Text>
+                      {movie.summary}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+            ) : (
+              <Card style={{ width: '18rem', color: 'black' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                  <Placeholder as={Card.Title} animation="glow">
+                    <Placeholder xs={6} />
+                  </Placeholder>
+                  <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                  </Placeholder>
+                </Card.Body>
+              </Card>
+            )
         }
         </div>
       </div>
