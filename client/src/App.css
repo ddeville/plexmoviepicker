@@ -44,3 +44,8 @@ body {
   text-align: center;
   margin-top: 50px;
 }
+
+.App-card {
+  width: 22rem;
+  color: black;
+}
