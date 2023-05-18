@@ -41,6 +41,11 @@ body {
 
 .App-movie {
   color: white;
-  text-align: left;
   margin-top: 50px;
+}
+
+.App-card {
+  text-align: center;
+  width: 20rem;
+  color: black;
 }

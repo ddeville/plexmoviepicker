@@ -143,7 +143,7 @@ function App() {
       <div className="App-movie">
       {
         movie ? (
-            <Card>
+            <Card className="App-card">
               <Card.Img variant="top" src={window.location.href + movie.posterPath} />
               <Card.Body>
                 <Card.Title>{movie.title} ({movie.year})</Card.Title>
