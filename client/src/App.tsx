@@ -122,7 +122,7 @@ function App() {
         {
             movie ? (
                 <Card style={{ width: '18rem', color: 'black' }}>
-                  <Card.Img variant="top" src={movie.posterUrl} />
+                  <Card.Img variant="top" src={window.location.href + movie.posterUrl} />
                   <Card.Body>
                     <Card.Title>{movie.title}</Card.Title>
                     <Card.Text>
