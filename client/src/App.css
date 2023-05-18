@@ -12,7 +12,7 @@ body {
   align-items: flex-start;
   width: 100vw;
   height: 100vh;
-  padding-top: 10%;
+  padding-top: 50px;
 }
 
 .App-picker {
