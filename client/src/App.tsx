@@ -81,7 +81,7 @@ function App() {
     <div className="App">
       <div className="App-picker">
         <Select
-          placeholder="Language..."
+          placeholder="Any Language"
           defaultValue={selectedLanguage}
           onChange={setSelectedLanguage}
           options={languages}
@@ -94,7 +94,7 @@ function App() {
         />
 
         <Select
-          placeholder="Country..."
+          placeholder="Any Country"
           defaultValue={selectedCountry}
           onChange={setSelectedCountry}
           options={countries}
@@ -107,7 +107,7 @@ function App() {
         />
 
         <Select
-          placeholder="Genre..."
+          placeholder="Any Genre"
           defaultValue={selectedGenre}
           onChange={setSelectedGenre}
           options={genres}
@@ -150,6 +150,7 @@ function App() {
                 <Card.Subtitle>{movie.tagline}</Card.Subtitle>
                 <Card.Text>{movie.summary}</Card.Text>
                 <Card.Text>Duration: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
+                <Card.Text>Directors: {movie.directors.join(', ')}</Card.Text>
                 <Card.Text>Rating: {movie.rating}</Card.Text>
               </Card.Body>
             </Card>
