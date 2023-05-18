@@ -127,23 +127,18 @@ function App() {
           className="App-button"
         > Pick a Movie
         </Button>
-
-        <div className="App-spinner">
-        {
-          isLoading ? (
-            <Spinner
-              variant="primary"
-              animation="border"
-              role="status"
-            />
-          ) : null
-        }
-        </div>
       </div>
 
       <div className="App-movie">
       {
-        movie ? (
+        isLoading ? (
+          <Spinner
+            variant="primary"
+            animation="border"
+            role="status"
+          />
+        ) : (
+          movie ? (
             <Card className="App-card">
               <Card.Img variant="top" src={window.location.href + movie.posterPath} />
               <Card.Body>
@@ -155,7 +150,8 @@ function App() {
                 <Card.Text>Rating: {movie.rating}</Card.Text>
               </Card.Body>
             </Card>
-        ) : null
+          ) : null
+        )
       }
       </div>
     </div>

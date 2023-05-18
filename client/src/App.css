@@ -33,12 +33,6 @@ body {
   margin-left: 10px;
 }
 
-.App-spinner {
-  width: 40px;
-  margin-left: 10px;
-  display: flex;
-}
-
 .App-movie {
   color: white;
   margin-top: 50px;
