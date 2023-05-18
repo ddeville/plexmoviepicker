@@ -143,14 +143,14 @@ function App() {
       <div className="App-movie">
       {
         movie ? (
-            <Card className="App-card">
-              <Card.Img variant="top" className="img" src={window.location.href + movie.posterPath} />
-              <Card.Body className="App-card-body">
-                <Card.Title className="App-card-title">{movie.title} ({movie.year})</Card.Title>
-                <Card.Subtitle className="App-card-subtitle">{movie.tagline}</Card.Subtitle>
-                <Card.Text className="App-card-text">{movie.summary}</Card.Text>
-                <Card.Text className="App-card-text">Duration: {movie.duration}</Card.Text>
-                <Card.Text className="App-card-text">Rating: {movie.rating}</Card.Text>
+            <Card>
+              <Card.Img variant="top" src={window.location.href + movie.posterPath} />
+              <Card.Body>
+                <Card.Title>{movie.title} ({movie.year})</Card.Title>
+                <Card.Subtitle>{movie.tagline}</Card.Subtitle>
+                <Card.Text>{movie.summary}</Card.Text>
+                <Card.Text>Duration: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
+                <Card.Text>Rating: {movie.rating}</Card.Text>
               </Card.Body>
             </Card>
         ) : null

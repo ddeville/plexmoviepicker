@@ -41,45 +41,6 @@ body {
 
 .App-movie {
   color: white;
-  text-align: center;
-  margin-top: 50px;
-}
-
-.App-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 22rem;
-  border-radius: 5px;
-  margin: 10px;
-}
-
-.App-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.App-card img {
-  border-radius: 5px 5px 0 0;
-  height: 300px;
-  object-fit: cover;
-}
-
-.App-card-body {
   text-align: left;
-}
-
-.App-card-title {
-  font-weight: bold;
-  font-size: 1.5em;
-  color: #333;
-}
-
-.App-card-subtitle {
-  font-size: 1em;
-  color: #777;
-  margin-bottom: 15px;
-}
-
-.App-card-text {
-  color: #555;
-  font-size: 0.875em;
+  margin-top: 50px;
 }
