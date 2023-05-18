@@ -65,9 +65,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-select">
+      <div className="App-picker">
         <Select
-          name="Audio Language"
+          placeholder="Language..."
           defaultValue={selectedLanguage}
           onChange={setSelectedLanguage}
           options={languages}
@@ -76,10 +76,11 @@ function App() {
           isMulti={false}
           isClearable={true}
           isSearchable={true}
+          className="App-select"
         />
 
         <Select
-          name="Country"
+          placeholder="Country..."
           defaultValue={selectedCountry}
           onChange={setSelectedCountry}
           options={countries}
@@ -88,10 +89,11 @@ function App() {
           isMulti={false}
           isClearable={true}
           isSearchable={true}
+          className="App-select"
         />
 
         <Select
-          name="Genre"
+          placeholder="Genre..."
           defaultValue={selectedGenre}
           onChange={setSelectedGenre}
           options={genres}
@@ -100,52 +102,44 @@ function App() {
           isMulti={false}
           isClearable={true}
           isSearchable={true}
+          className="App-select"
         />
-
-        {
-          isLoading ? (
-            <Spinner animation="border" role="status" variant="primary">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          ) : null
-        }
 
         <Button
           variant="primary"
           disabled={isLoading}
           onClick={!isLoading ? handleClick : undefined}
-        >
-        Pick a Movie
+          className="App-button"
+        > Pick a Movie
         </Button>
 
-        <div className="App-movie">
+        <div className="App-spinner">
         {
-            movie ? (
-                <Card style={{ width: '18rem', color: 'black' }}>
-                  <Card.Img variant="top" src={window.location.href + movie.posterPath} />
-                  <Card.Body>
-                    <Card.Title>{movie.title}</Card.Title>
-                    <Card.Text>
-                      {movie.summary}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-            ) : (
-              <Card style={{ width: '18rem', color: 'black' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                  <Placeholder as={Card.Title} animation="glow">
-                    <Placeholder xs={6} />
-                  </Placeholder>
-                  <Placeholder as={Card.Text} animation="glow">
-                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-                    <Placeholder xs={6} /> <Placeholder xs={8} />
-                  </Placeholder>
-                </Card.Body>
-              </Card>
-            )
+          isLoading ? (
+            <Spinner
+              variant="primary"
+              animation="border"
+              role="status"
+            />
+          ) : null
         }
         </div>
+      </div>
+
+      <div className="App-movie">
+      {
+        movie ? (
+            <Card style={{ width: '18rem', color: 'black' }}>
+              <Card.Img variant="top" src={window.location.href + movie.posterPath} />
+              <Card.Body>
+                <Card.Title>{movie.title}</Card.Title>
+                <Card.Text>
+                  {movie.summary}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+        ) : null
+      }
       </div>
     </div>
   );
