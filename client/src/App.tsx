@@ -81,7 +81,7 @@ function App() {
     <div className="App">
       <div className="App-picker">
         <Select
-          placeholder="Any Language"
+          placeholder="Language..."
           defaultValue={selectedLanguage}
           onChange={setSelectedLanguage}
           options={languages}
@@ -94,7 +94,7 @@ function App() {
         />
 
         <Select
-          placeholder="Any Country"
+          placeholder="Country..."
           defaultValue={selectedCountry}
           onChange={setSelectedCountry}
           options={countries}
@@ -107,7 +107,7 @@ function App() {
         />
 
         <Select
-          placeholder="Any Genre"
+          placeholder="Genre..."
           defaultValue={selectedGenre}
           onChange={setSelectedGenre}
           options={genres}
