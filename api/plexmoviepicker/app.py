@@ -11,17 +11,25 @@ from plexapi.server import PlexServer
 baseurl = os.environ["PLEX_LOCATION"]
 auth_token = os.environ["PLEX_AUTH_TOKEN"]
 plex = PlexServer(baseurl=baseurl, token=auth_token)
-random.seed()
+
 app = Flask("plexmoviebuilder")
 
 
 @app.route("/api/metadata")
 def get_metadata() -> dict[str, Any]:
     return {
-        "countries": [
-            {"value": c.id, "label": c.tag} for c in plex.library.tags("country")
-        ],
-        "genres": [{"value": g.id, "label": g.tag} for g in plex.library.tags("genre")],
+        "countries": list(
+            sorted(
+                [{"value": c.id, "label": c.tag} for c in plex.library.tags("country")],
+                key=lambda c: c["label"],
+            )
+        ),
+        "genres": list(
+            sorted(
+                [{"value": g.id, "label": g.tag} for g in plex.library.tags("genre")],
+                key=lambda g: g["label"],
+            )
+        ),
         "languages": [
             {"value": "eng", "label": "English"},
             {"value": "fra", "label": "French"},
@@ -51,6 +59,10 @@ def get_random_movie() -> dict[str, Any]:
 
     movie = random.choice(movies)
 
+    poster_path = "/api/movie_poster/" + base64.urlsafe_b64encode(
+        movie.thumb.encode("utf-8")
+    ).decode("utf-8")
+
     return {
         "movies": [
             {
@@ -60,10 +72,7 @@ def get_random_movie() -> dict[str, Any]:
                 "tagline": movie.tagline,
                 "summary": movie.summary,
                 "year": movie.year,
-                "posterId": "/api/movie_poster/"
-                + base64.urlsafe_b64encode(movie.thumbUrl.encode("utf-8")).decode(
-                    "utf-8"
-                ),
+                "posterPath": poster_path,
                 "duration": movie.duration,
                 "countries": [c.tag for c in movie.countries],
                 "directors": [d.tag for d in movie.directors],
