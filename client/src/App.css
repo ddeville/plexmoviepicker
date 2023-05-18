@@ -8,11 +8,11 @@ body {
 
 .App {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  padding-top: 50px;
 }
 
 .App-picker {
@@ -20,6 +20,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding-top: 50px;
 }
 
 .App-select {
@@ -40,4 +41,6 @@ body {
 
 .App-movie {
   color: white;
+  text-align: center;
+  margin-top: 50px;
 }
