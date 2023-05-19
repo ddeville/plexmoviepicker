@@ -34,16 +34,12 @@ body {
   margin-right: 5px;
 }
 
-.App-movie {
-  color: white;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
 .App-card {
   text-align: left;
   width: 22rem;
   color: black;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .App-card-title {
