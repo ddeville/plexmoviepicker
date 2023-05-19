@@ -79,4 +79,8 @@ body {
     margin-left: 0;
     margin-bottom: 10px;
   }
+
+  .App-button {
+    margin-top: 10px;
+  }
 }
