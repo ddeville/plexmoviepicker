@@ -24,13 +24,14 @@ body {
 }
 
 .App-select {
-  width: 150px;
-  margin-right: 10px;
+  width: 160px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .App-button {
-  width: 130px;
-  margin-left: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .App-movie {
@@ -42,4 +43,16 @@ body {
   text-align: center;
   width: 20rem;
   color: black;
+}
+
+@media (max-width: 660px) {
+  .App-picker {
+    flex-direction: column;
+  }
+
+  .App-select, .App-button {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
 }
