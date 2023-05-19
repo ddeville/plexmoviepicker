@@ -149,7 +149,7 @@ function App() {
                 <Card.Text className="App-card-info"><b>Language</b>: {movie.audioLanguage}</Card.Text>
                 <Card.Text className="App-card-info"><b>Genre</b>: {movie.genres.join(', ')}</Card.Text>
                 <Card.Text className="App-card-info"><b>Country</b>: {movie.countries.join(', ')}</Card.Text>
-                <Card.Text className="App-card-info"><b>Directors</b>: {movie.directors.join(', ')}</Card.Text>
+                <Card.Text className="App-card-info"><b>Director</b>: {movie.directors.join(', ')}</Card.Text>
                 <Card.Text className="App-card-info"><b>Duration</b>: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
                 <Card.Text className="App-card-info"><b>Rating</b>: {movie.rating} – {movie.audienceRating}</Card.Text>
               </Card.Body>
