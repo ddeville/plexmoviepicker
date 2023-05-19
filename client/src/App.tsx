@@ -14,6 +14,7 @@ interface Movie {
   summary: string
   year: string
   posterPath: string
+  audioLanguage: string
   duration: number
   countries: string[]
   directors: string[]
@@ -145,6 +146,7 @@ function App() {
                 <Card.Title className="App-card-title">{movie.title} ({movie.year})</Card.Title>
                 <Card.Subtitle className="App-card-tagline">{movie.tagline}</Card.Subtitle>
                 <Card.Text className="App-card-summary">{movie.summary}</Card.Text>
+                <Card.Text className="App-card-info"><b>Language</b>: {movie.audioLanguage}</Card.Text>
                 <Card.Text className="App-card-info"><b>Directors</b>: {movie.directors.join(', ')}</Card.Text>
                 <Card.Text className="App-card-info"><b>Duration</b>: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
                 <Card.Text className="App-card-info"><b>Rating</b>: {movie.rating} – {movie.audienceRating}</Card.Text>
