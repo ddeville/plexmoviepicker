@@ -49,13 +49,13 @@ body {
 .App-card-title {
   font-size: 1.3em;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .App-card-tagline {
   font-size: 1.1em;
   font-style: italic;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .App-card-summary {
