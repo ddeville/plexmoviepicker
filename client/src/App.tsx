@@ -147,7 +147,7 @@ function App() {
                 <Card.Text className="App-card-summary">{movie.summary}</Card.Text>
                 <Card.Text className="App-card-info"><b>Directors</b>: {movie.directors.join(', ')}</Card.Text>
                 <Card.Text className="App-card-info"><b>Duration</b>: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
-                <Card.Text className="App-card-info"><b>Rating</b>: {movie.rating}</Card.Text>
+                <Card.Text className="App-card-info"><b>Rating</b>: {movie.rating} – {movie.audienceRating}</Card.Text>
               </Card.Body>
             </Card>
           ) : null
