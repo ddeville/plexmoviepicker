@@ -76,7 +76,7 @@ def get_random_movie() -> dict[str, Any]:
                 "summary": movie.summary,
                 "year": movie.year,
                 "posterPath": poster_path,
-                "audioLanguage": movie.audioStreams[0].language,
+                "audioLanguage": movie.audioStreams()[0].language,
                 "duration": movie.duration,
                 "countries": [c.tag for c in movie.countries],
                 "directors": [d.tag for d in movie.directors],
