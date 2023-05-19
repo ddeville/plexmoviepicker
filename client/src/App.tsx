@@ -142,12 +142,12 @@ function App() {
             <Card className="App-card">
               <Card.Img variant="top" src={window.location.href + movie.posterPath} />
               <Card.Body>
-                <Card.Title>{movie.title} ({movie.year})</Card.Title>
-                <Card.Subtitle>{movie.tagline}</Card.Subtitle>
-                <Card.Text>{movie.summary}</Card.Text>
-                <Card.Text>Duration: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
-                <Card.Text>Directors: {movie.directors.join(', ')}</Card.Text>
-                <Card.Text>Rating: {movie.rating}</Card.Text>
+                <Card.Title className="App-card-title">{movie.title} ({movie.year})</Card.Title>
+                <Card.Subtitle className="App-card-tagline">{movie.tagline}</Card.Subtitle>
+                <Card.Text className="App-card-summary">{movie.summary}</Card.Text>
+                <Card.Text className="App-card-info"><b>Directors</b>: {movie.directors.join(', ')}</Card.Text>
+                <Card.Text className="App-card-info"><b>Duration</b>: {Math.floor(movie.duration / 60 / 1000)} minutes</Card.Text>
+                <Card.Text className="App-card-info"><b>Rating</b>: {movie.rating}</Card.Text>
               </Card.Body>
             </Card>
           ) : null
