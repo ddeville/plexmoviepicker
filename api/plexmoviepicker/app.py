@@ -34,6 +34,7 @@ def get_metadata() -> dict[str, Any]:
             {"value": "eng", "label": "English"},
             {"value": "fra", "label": "French"},
             {"value": "ita", "label": "Italian"},
+            {"value": "jpn", "label": "Japanese"},
             {"value": "spa", "label": "Spanish"},
             {"value": "heb", "label": "Hebrew"},
             {"value": "rus", "label": "Russian"},
