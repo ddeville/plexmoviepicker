@@ -14,4 +14,3 @@ services:
     image: plexmoviepicker-client
     ports:
       - "25002:80"
-version: '3'
