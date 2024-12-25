@@ -5,4 +5,4 @@ build:
 
 freeze-deps:
 	uv pip compile --generate-hashes --upgrade --output-file=api/lock.txt api/pyproject.toml
-	cd client && npm install --package-lock-only
+	cd client && npm audit fix && npm install --package-lock-only
