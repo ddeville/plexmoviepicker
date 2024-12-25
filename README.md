@@ -10,4 +10,3 @@ The project ships as two main containers, one for the backend running Flask behi
 Note that two environment variables have to be set for this to work:
 - `PLEX_LOCATION`: this is simply the URL to the Plex library.
 - `PLEX_AUTH_TOKEN`: this is the Plex authentication token (`X-Plex-Token`)
-
