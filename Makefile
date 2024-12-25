@@ -4,5 +4,5 @@ build:
 	docker-compose -f docker-compose.yaml build
 
 freeze-deps:
-	uv pip compile --generate-hashes --output-file=api/requirements.txt api/pyproject.toml
+	uv pip compile --generate-hashes --output-file=api/lock.txt api/pyproject.toml
 	cd client && npm install --package-lock-only
