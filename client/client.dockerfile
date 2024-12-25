@@ -12,5 +12,5 @@ RUN npm run build
 
 FROM nginx:stable-alpine3.20@sha256:35e3238f2f0925a505d5d697df9a9148db9a0c78e89fd2e253919047b3cec824
 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.default.conf /etc/nginx/conf.d/default.conf
