@@ -8,3 +8,4 @@ npm-debug.log*
 /api/build
 
 .DS_Store
+.python-version

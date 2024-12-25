@@ -1,0 +1,16 @@
+[project]
+name = "plexmoviepicker"
+version = "0.0.1"
+dependencies = [
+    "flask",
+    "gunicorn",
+    "plexapi",
+    "requests",
+]
+
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+plexmoviepicker = ["py.typed"]
