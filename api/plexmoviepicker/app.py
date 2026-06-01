@@ -2,16 +2,19 @@ import base64
 import io
 import os
 import random
+from pathlib import Path
 from typing import Any
 
 import requests
-from flask import Flask, Response, make_response, request, send_file
+from flask import Flask, Response, make_response, request, send_file, send_from_directory
 from plexapi.server import PlexServer
+from werkzeug.utils import safe_join
 
 baseurl = os.environ["PLEX_LOCATION"]
 auth_token = os.environ["PLEX_AUTH_TOKEN"]
 plex = PlexServer(baseurl=baseurl, token=auth_token)
 
+static_dir = os.environ.get("PLEXMOVIEPICKER_STATIC_DIR")
 app = Flask("plexmoviebuilder")
 
 
@@ -98,3 +101,19 @@ def get_movie_poster(id: str) -> Response:
         return send_file(io.BytesIO(response.content), mimetype="image/png")
     else:
         return make_response("Unable to fetch image", 400)
+
+
+@app.route("/")
+@app.route("/<path:path>")
+def get_client(path: str = "") -> Response:
+    if path.startswith("api/"):
+        return make_response("Not Found", 404)
+
+    if not static_dir:
+        return make_response("Frontend assets are not installed", 404)
+
+    static_path = safe_join(static_dir, path) if path else None
+    if static_path and Path(static_path).is_file():
+        return send_from_directory(static_dir, path)
+
+    return send_from_directory(static_dir, "index.html")

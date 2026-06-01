@@ -6,6 +6,7 @@ dependencies = [
     "gunicorn",
     "plexapi",
     "requests",
+    "werkzeug",
 ]
 
 [build-system]

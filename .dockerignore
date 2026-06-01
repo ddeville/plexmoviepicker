@@ -1,0 +1,7 @@
+.git
+.venv
+api/.venv
+client/dist
+client/node_modules
+**/__pycache__
+**/*.pyc
