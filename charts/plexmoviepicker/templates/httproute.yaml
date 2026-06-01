@@ -1,0 +1,29 @@
+{{- if .Values.gateway.enabled }}
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ include "plexmoviepicker.fullname" . }}
+  labels:
+    {{- include "plexmoviepicker.labels" . | nindent 4 }}
+spec:
+  parentRefs:
+    - name: {{ required "Set gateway.name" .Values.gateway.name | quote }}
+      {{- with .Values.gateway.namespace }}
+      namespace: {{ . | quote }}
+      {{- end }}
+      sectionName: {{ required "Set gateway.listenerName" .Values.gateway.listenerName | quote }}
+  {{- with .Values.gateway.hostnames }}
+  hostnames:
+    {{- range . }}
+    - {{ . | quote }}
+    {{- end }}
+  {{- end }}
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: {{ include "plexmoviepicker.fullname" . }}
+          port: 80
+{{- end }}

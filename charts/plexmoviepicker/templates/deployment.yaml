@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "plexmoviepicker.fullname" . }}
+  labels:
+    {{- include "plexmoviepicker.labels" . | nindent 4 }}
+    app.kubernetes.io/component: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "plexmoviepicker.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: app
+  template:
+    metadata:
+      labels:
+        {{- include "plexmoviepicker.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: app
+    spec:
+      containers:
+        - name: plexmoviepicker
+          image: {{ include "plexmoviepicker.image" . | quote }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          env:
+            - name: PLEX_LOCATION
+              value: {{ required "Set plex.location" .Values.plex.location | quote }}
+            - name: PLEX_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "plexmoviepicker.authTokenSecretName" . }}
+                  key: {{ required "Set plex.authTokenSecret.key" .Values.plex.authTokenSecret.key | quote }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

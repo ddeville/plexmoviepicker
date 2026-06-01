@@ -1,0 +1,14 @@
+Plex Movie Picker has been installed.
+
+The Service is:
+  {{ include "plexmoviepicker.fullname" . }}
+
+{{- if .Values.gateway.enabled }}
+The HTTPRoute is attached to Gateway listener:
+  {{ required "Set gateway.listenerName" .Values.gateway.listenerName }}
+{{- else }}
+The HTTPRoute is disabled.
+{{- end }}
+
+To test with port-forwarding:
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "plexmoviepicker.fullname" . }} 8080:80

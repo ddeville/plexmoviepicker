@@ -1,0 +1,20 @@
+plex:
+  location: ""
+  authTokenSecret:
+    name: ""
+    key: PLEX_AUTH_TOKEN
+
+image:
+  repository: ghcr.io/ddeville/plexmoviepicker
+  tag: ""
+  digest: ""
+
+resources: {}
+
+gateway:
+  enabled: true
+  name: ""
+  namespace: ""
+  listenerName: ""
+  hostnames:
+    - plexmoviepicker.local
