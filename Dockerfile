@@ -1,4 +1,4 @@
-FROM node:23.5.0-alpine3.21@sha256:c61b6b12a3c96373673cd52d7ecee2314e82bca5d541eecf0bc6aee870c8c6f7 AS client-builder
+FROM node:22.21.1-alpine3.22 AS client-builder
 
 WORKDIR /client
 
